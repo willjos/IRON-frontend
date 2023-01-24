@@ -2,7 +2,7 @@ import { useState } from "react";
 import { View, Pressable, Text, TextInput } from "react-native";
 import UserForm from "./UserForm";
 
-export default function Login() {
+export default function Login({ currentUser, navigation }) {
   const [loginRender, setLoginRender] = useState(true);
   const [loginUsernameInput, setloginUsernameInput] = useState("");
   const [loginPasswordInput, setloginPasswordInput] = useState("");
@@ -35,7 +35,7 @@ export default function Login() {
       ) : (
         <View>
           <Text className="text-center">Log in here:</Text>
-          <UserForm />
+          <UserForm currentUser={currentUser} navigation={navigation} />
         </View>
       )}
       {createAccountRender ? (
@@ -45,7 +45,7 @@ export default function Login() {
       ) : (
         <View>
           <Text className="text-center">No account? Register with us:</Text>
-          <UserForm />
+          <UserForm currentUser={currentUser} navigation={navigation} />
         </View>
       )}
     </View>

@@ -15,7 +15,7 @@ export default function App() {
         <Stack.Screen name="Login">
           {(props) => <LoginPage {...props} currentUser={currentUser} />}
         </Stack.Screen>
-        <Stack.Screen name="Home Page">
+        <Stack.Screen name="HomePage">
           {(props) => <HomePage {...props} currentUser={currentUser} />}
         </Stack.Screen>
       </Stack.Navigator>
