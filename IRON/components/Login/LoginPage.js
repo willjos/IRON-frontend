@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Pressable, Text, TextInput } from "react-native";
+import { View, Pressable, Text } from "react-native";
 import UserForm from "./UserForm";
 
 export default function LoginPage({ setCurrentUser, navigation }) {

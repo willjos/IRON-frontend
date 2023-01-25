@@ -1,4 +1,5 @@
 import { View, Text, Pressable } from "react-native";
+import { useState } from "react";
 
 export default function HomePage({ navigation, currentUser, setCurrentUser }) {
   const handleLogoutPress = () => {
@@ -24,9 +25,9 @@ export default function HomePage({ navigation, currentUser, setCurrentUser }) {
       </Pressable>
       <Pressable
         className="h-12 p-4 m-2 bg-green"
-        onPress={() => navigation.navigate("Analytics")}
+        onPress={() => navigation.navigate("Progress Tracker")}
       >
-        <Text className="text-white">Analytics</Text>
+        <Text className="text-white">Progress Tracker</Text>
       </Pressable>
       <Pressable className="h-12 p-4 m-2 bg-green" onPress={handleLogoutPress}>
         <Text className="text-white">Log Out</Text>

@@ -1,7 +1,7 @@
 import { TextInput, Pressable, View, Text } from "react-native";
 import { useState } from "react";
 
-export default function LoginForm({ setCurrentUser, navigation }) {
+export default function UserForm({ setCurrentUser, navigation }) {
   const [usernameInput, setUsernameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
 
@@ -14,10 +14,7 @@ export default function LoginForm({ setCurrentUser, navigation }) {
   };
 
   const handleSubmitPress = () => {
-    console.log(usernameInput, passwordInput);
-    if (usernameInput && passwordInput) {
-      setCurrentUser(usernameInput);
-    }
+    setCurrentUser(usernameInput);
   };
 
   return (
