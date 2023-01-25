@@ -1,9 +1,23 @@
 import { TextInput, Pressable, View, Text } from "react-native";
+import { useState } from "react";
 
-export default function LoginForm({ currentUser, navigation }) {
+export default function LoginForm({ setCurrentUser, navigation }) {
+  const [usernameInput, setUsernameInput] = useState("");
+  const [passwordInput, setPasswordInput] = useState("");
+
+  const handleUsernameInput = (text) => {
+    setUsernameInput(text);
+  };
+
+  const handlePasswordInput = (text) => {
+    setPasswordInput(text);
+  };
+
   const handleSubmitPress = () => {
-    console.log("check user details");
-    navigation.navigate("Home Page");
+    console.log(usernameInput, passwordInput);
+    if (usernameInput && passwordInput) {
+      setCurrentUser(usernameInput);
+    }
   };
 
   return (
@@ -11,10 +25,16 @@ export default function LoginForm({ currentUser, navigation }) {
       <TextInput
         className="w-5/6 h-10 border-solid border border-slate m-2 p-2 bg-white"
         placeholder="Username"
+        onChangeText={(text) => {
+          handleUsernameInput(text);
+        }}
       ></TextInput>
       <TextInput
         className="w-5/6 h-10 border-solid border border-slate m-2 p-2 bg-white"
         placeholder="Password"
+        onChangeText={(text) => {
+          handlePasswordInput(text);
+        }}
       ></TextInput>
       <Pressable
         onPress={handleSubmitPress}
