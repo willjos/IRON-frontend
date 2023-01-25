@@ -1,9 +1,9 @@
 import { View, Text, Pressable } from "react-native";
 
-export default function Analytics({ navigation }) {
+export default function ProgressTracker({ navigation }) {
   return (
     <View>
-      <Text>Analytics</Text>
+      <Text>Progress Tracker</Text>
     </View>
   );
 }

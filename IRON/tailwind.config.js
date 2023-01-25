@@ -5,9 +5,12 @@ module.exports = {
     "./components/Login/LoginPage.js",
     "./components/Login/UserForm.js",
     "./components/Home/HomePage.js",
+    "./components/Home/ProgressTracker.js",
     "./components/Home/StartSession.js",
     "./components/Home/Create.js",
-    "./components/Home/Analytics.js",
+    "./components/Navigation/NavHomePage.js",
+    "./components/Navigation/NavLogin.js",
+    "./components/Workout/WorkoutPage.js",
   ],
   theme: {
     extend: {},
