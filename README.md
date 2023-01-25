@@ -24,11 +24,11 @@ A functioning workout logger app that is a slightly simplified version of HeavyS
 
 ## Running the project
 
-Users must currently own the Expo Go app on iOS.
-Run the following command in the expo app directory (IRON):
+Users must currently own the Expo Go iOS app.
+Run the following command in the Expo project directory (IRON):
 
 ```
 npx expo start
 ```
 
-On opening the Expo Go app, there should be the option to open the running Expo app.
+Upon opening the Expo Go iOS app, there should be the option to open the running Expo project.
