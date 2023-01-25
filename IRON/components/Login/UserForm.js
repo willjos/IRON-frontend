@@ -3,7 +3,7 @@ import { TextInput, Pressable, View, Text } from "react-native";
 export default function LoginForm({ currentUser, navigation }) {
   const handleSubmitPress = () => {
     console.log("check user details");
-    navigation.navigate("HomePage");
+    navigation.navigate("Home Page");
   };
 
   return (
