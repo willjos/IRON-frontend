@@ -4,7 +4,10 @@ module.exports = {
     "./App.js",
     "./components/Login/LoginPage.js",
     "./components/Login/UserForm.js",
-    "./components/HomePage.js",
+    "./components/Home/HomePage.js",
+    "./components/Home/StartSession.js",
+    "./components/Home/Create.js",
+    "./components/Home/Analytics.js",
   ],
   theme: {
     extend: {},

@@ -1,10 +1,11 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useState } from "react";
 import LoginPage from "./components/Login/LoginPage";
-import HomePage from "./components/HomePage";
+import HomePage from "./components/Home/HomePage";
+import StartSession from "./components/Home/StartSession";
+import Create from "./components/Home/Create";
+import Analytics from "./components/Home/Analytics";
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState("");
@@ -22,8 +23,17 @@ export default function App() {
         <Stack.Screen name="Welcome to IRON">
           {(props) => <LoginPage {...props} currentUser={currentUser} />}
         </Stack.Screen>
-        <Stack.Screen name="HomePage">
+        <Stack.Screen name="Home Page">
           {(props) => <HomePage {...props} currentUser={currentUser} />}
+        </Stack.Screen>
+        <Stack.Screen name="Start Session">
+          {(props) => <StartSession {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="Create">
+          {(props) => <Create {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="Analytics">
+          {(props) => <Analytics {...props} />}
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
@@ -31,12 +41,3 @@ export default function App() {
 }
 
 const Stack = createNativeStackNavigator();
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
