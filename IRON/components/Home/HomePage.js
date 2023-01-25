@@ -2,7 +2,6 @@ import { View, Text, Pressable } from "react-native";
 
 export default function HomePage({ navigation, currentUser, setCurrentUser }) {
   const handleLogoutPress = () => {
-    navigation.navigate("Welcome to IRON");
     setCurrentUser("");
   };
 
