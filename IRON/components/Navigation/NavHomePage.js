@@ -5,6 +5,7 @@ import HomePage from "../Home/HomePage";
 import ProgressTracker from "../Home/ProgressTracker";
 import StartSession from "../Home/StartSession";
 import WorkoutPage from "../Workout/WorkoutPage";
+import ExercisePage from "../Workout/ExercisePage";
 
 export default function NavHome({ currentUser, setCurrentUser, userData }) {
   return (
@@ -35,6 +36,15 @@ export default function NavHome({ currentUser, setCurrentUser, userData }) {
               {(props) => <WorkoutPage {...props} {...item} />}
             </Stack.Screen>
           );
+        })}
+        {userData.workouts.map((item) => {
+          return item.exercises.map((exercise) => {
+            return (
+              <Stack.Screen name={exercise["name"]}>
+                {(props) => <ExercisePage {...props} {...exercise} />}
+              </Stack.Screen>
+            );
+          });
         })}
         <Stack.Screen name="Create">
           {(props) => <Create {...props} />}

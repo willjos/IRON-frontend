@@ -4,6 +4,7 @@ export default function StartSession({ userData, navigation }) {
   const handleWorkoutPress = (name) => {
     navigation.navigate(name);
   };
+
   return (
     <View>
       {userData.workouts.map((item, index) => {
