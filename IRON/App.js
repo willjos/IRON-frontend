@@ -11,8 +11,15 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Login">
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: "#284B63",
+          },
+          headerTintColor: "#fff",
+        }}
+      >
+        <Stack.Screen name="Welcome to IRON">
           {(props) => <LoginPage {...props} currentUser={currentUser} />}
         </Stack.Screen>
         <Stack.Screen name="HomePage">

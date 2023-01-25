@@ -7,20 +7,20 @@ export default function LoginForm({ currentUser, navigation }) {
   };
 
   return (
-    <View className="border-solid border border-slate-800 items-center m-2 p-2">
+    <View className="border-solid items-center m-2">
       <TextInput
-        className="w-5/6 h-10 border-solid border border-slate-800 m-2 p-2"
+        className="w-5/6 h-10 border-solid border border-slate m-2 p-2 bg-white"
         placeholder="Username"
       ></TextInput>
       <TextInput
-        className="w-5/6 h-10 border-solid border border-slate-800 m-2 p-2"
+        className="w-5/6 h-10 border-solid border border-slate m-2 p-2 bg-white"
         placeholder="Password"
       ></TextInput>
       <Pressable
         onPress={handleSubmitPress}
-        className="w-3/6 h-10 border-solid border border-slate-800 m-2 p-2.5"
+        className="h-12 w-1/2 p-4 m-2 bg-green"
       >
-        <Text className="text-center">Submit</Text>
+        <Text className="text-center text-white">Submit</Text>
       </Pressable>
     </View>
   );

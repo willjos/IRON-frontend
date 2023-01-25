@@ -27,10 +27,10 @@ export default function Login({ currentUser, navigation }) {
   };
 
   return (
-    <View className="h-full w-full justify-center">
+    <View className="h-full w-full justify-center bg-white">
       {loginRender ? (
-        <Pressable className="text-center" onPress={handleLoginPress}>
-          <Text className="text-center">Log In</Text>
+        <Pressable className="h-12 p-4 m-2 bg-green" onPress={handleLoginPress}>
+          <Text className="text-center  text-white">Log In</Text>
         </Pressable>
       ) : (
         <View>
@@ -39,8 +39,11 @@ export default function Login({ currentUser, navigation }) {
         </View>
       )}
       {createAccountRender ? (
-        <Pressable onPress={handleCreateAccountPress}>
-          <Text className="text-center">Create Account</Text>
+        <Pressable
+          className="h-12 p-4 m-2 bg-green"
+          onPress={handleCreateAccountPress}
+        >
+          <Text className="text-center text-white">Create Account</Text>
         </Pressable>
       ) : (
         <View>
