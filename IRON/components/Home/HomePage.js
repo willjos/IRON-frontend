@@ -1,8 +1,16 @@
 import { View, Text, Pressable } from "react-native";
 
-export default function HomePage({ navigation }) {
+export default function HomePage({ navigation, currentUser, setCurrentUser }) {
+  const handleLogoutPress = () => {
+    navigation.navigate("Welcome to IRON");
+    setCurrentUser("");
+  };
+
   return (
-    <View>
+    <View className="h-full w-full justify-center bg-white">
+      <Text className="text-lg text-left mx-2 py-2">
+        Welcome, {currentUser}
+      </Text>
       <Pressable
         className="h-12 p-4 m-2 bg-green"
         onPress={() => navigation.navigate("Start Session")}
@@ -21,10 +29,7 @@ export default function HomePage({ navigation }) {
       >
         <Text className="text-white">Analytics</Text>
       </Pressable>
-      <Pressable
-        className="h-12 p-4 m-2 bg-green"
-        onPress={() => navigation.navigate("Welcome to IRON")}
-      >
+      <Pressable className="h-12 p-4 m-2 bg-green" onPress={handleLogoutPress}>
         <Text className="text-white">Log Out</Text>
       </Pressable>
     </View>

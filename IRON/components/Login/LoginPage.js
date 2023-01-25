@@ -2,15 +2,9 @@ import { useState } from "react";
 import { View, Pressable, Text, TextInput } from "react-native";
 import UserForm from "./UserForm";
 
-export default function Login({ currentUser, navigation }) {
+export default function LoginPage({ setCurrentUser, navigation }) {
   const [loginRender, setLoginRender] = useState(true);
-  const [loginUsernameInput, setloginUsernameInput] = useState("");
-  const [loginPasswordInput, setloginPasswordInput] = useState("");
   const [createAccountRender, setCreateAccountRender] = useState(true);
-  const [createAccountUsernameInput, setCreateAccountUsernameInput] =
-    useState("");
-  const [createAccountPasswordInput, setCreateAccountPasswordInput] =
-    useState("");
 
   const handleLoginPress = () => {
     setLoginRender(false);
@@ -22,10 +16,6 @@ export default function Login({ currentUser, navigation }) {
     setLoginRender(true);
   };
 
-  const handleSubmitPress = () => {
-    console.log("send API request");
-  };
-
   return (
     <View className="h-full w-full justify-center bg-white">
       {loginRender ? (
@@ -35,7 +25,7 @@ export default function Login({ currentUser, navigation }) {
       ) : (
         <View>
           <Text className="text-center">Log in here:</Text>
-          <UserForm currentUser={currentUser} navigation={navigation} />
+          <UserForm setCurrentUser={setCurrentUser} navigation={navigation} />
         </View>
       )}
       {createAccountRender ? (
@@ -48,7 +38,7 @@ export default function Login({ currentUser, navigation }) {
       ) : (
         <View>
           <Text className="text-center">No account? Register with us:</Text>
-          <UserForm currentUser={currentUser} navigation={navigation} />
+          <UserForm setCurrentUser={setCurrentUser} navigation={navigation} />
         </View>
       )}
     </View>
