@@ -11,6 +11,8 @@ module.exports = {
     "./components/Navigation/NavHomePage.js",
     "./components/Navigation/NavLogin.js",
     "./components/Workout/WorkoutPage.js",
+    "./components/Workout/SetLog.js",
+    "./components/Workout/ExercisePage.js",
   ],
   theme: {
     extend: {},
