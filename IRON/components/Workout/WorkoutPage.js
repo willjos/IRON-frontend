@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { View, Text, Pressable } from "react-native";
 
-export default function WorkoutPage({ navigation, ...item }) {
+export default function WorkoutPage({
+  navigation,
+  userData,
+  setUserData,
+  ...item
+}) {
   const { name, exercises } = item;
   const [workoutData, setWorkoutData] = useState({});
 

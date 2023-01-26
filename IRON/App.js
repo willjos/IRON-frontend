@@ -9,7 +9,25 @@ export default function App() {
       {
         name: "Push",
         exercises: [
-          { name: "bench" },
+          {
+            name: "bench",
+            workouts: [
+              {
+                date: "some date",
+                sets: [
+                  { weight: 70, reps: 8 },
+                  { weight: 75, reps: 9 },
+                ],
+              },
+              {
+                date: "some other date",
+                sets: [
+                  { weight: 80, reps: 10 },
+                  { weight: 85, reps: 11 },
+                ],
+              },
+            ],
+          },
           { name: "tricep extension" },
           { name: "dip" },
         ],
@@ -47,6 +65,7 @@ export default function App() {
           currentUser={currentUser}
           setCurrentUser={setCurrentUser}
           userData={userData}
+          setUserData={setUserData}
         />
       ) : (
         <NavLogin setCurrentUser={setCurrentUser} />

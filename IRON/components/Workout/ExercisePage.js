@@ -2,7 +2,12 @@ import { useState } from "react";
 import { View, Text, TextInput, Pressable } from "react-native";
 import SetLog from "./SetLog";
 
-export default function ExercisePage({ route, navigation, ...exercise }) {
+export default function ExercisePage({
+  navigation,
+  userData,
+  setUserData,
+  ...exercise
+}) {
   const { name } = exercise;
   const [weightInput, setWeightInput] = useState("");
   const [repInput, setRepInput] = useState("");
@@ -25,9 +30,6 @@ export default function ExercisePage({ route, navigation, ...exercise }) {
   };
 
   const handleDonePress = () => {
-    const newWorkoutData = { ...route.params.workoutData };
-    newWorkoutData[name] = exerciseData;
-    route.params.setWorkoutData(newWorkoutData);
     navigation.goBack();
   };
 
