@@ -6,6 +6,9 @@ import ProgressTracker from "../Home/ProgressTracker";
 import StartSession from "../Home/StartSession";
 import WorkoutPage from "../Workout/WorkoutPage";
 import ExercisePage from "../Workout/ExercisePage";
+import History from "../Progress/History";
+import Analytics from "../Progress/Analytics";
+import PRList from "../Progress/PRList";
 
 export default function NavHome({
   currentUser,
@@ -70,6 +73,15 @@ export default function NavHome({
         </Stack.Screen>
         <Stack.Screen name="Progress Tracker">
           {(props) => <ProgressTracker {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="History">
+          {(props) => <History {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="Analytics">
+          {(props) => <Analytics {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="Personal Records">
+          {(props) => <PRList {...props} />}
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
