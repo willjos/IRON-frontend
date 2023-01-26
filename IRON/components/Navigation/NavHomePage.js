@@ -7,7 +7,12 @@ import StartSession from "../Home/StartSession";
 import WorkoutPage from "../Workout/WorkoutPage";
 import ExercisePage from "../Workout/ExercisePage";
 
-export default function NavHome({ currentUser, setCurrentUser, userData }) {
+export default function NavHome({
+  currentUser,
+  setCurrentUser,
+  userData,
+  setUserData,
+}) {
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -33,7 +38,14 @@ export default function NavHome({ currentUser, setCurrentUser, userData }) {
         {userData.workouts.map((item, index) => {
           return (
             <Stack.Screen name={item.name} key={index}>
-              {(props) => <WorkoutPage {...props} {...item} />}
+              {(props) => (
+                <WorkoutPage
+                  {...props}
+                  {...item}
+                  userData={userData}
+                  setUserData={setUserData}
+                />
+              )}
             </Stack.Screen>
           );
         })}
@@ -41,7 +53,14 @@ export default function NavHome({ currentUser, setCurrentUser, userData }) {
           return item.exercises.map((exercise) => {
             return (
               <Stack.Screen name={exercise["name"]}>
-                {(props) => <ExercisePage {...props} {...exercise} />}
+                {(props) => (
+                  <ExercisePage
+                    {...props}
+                    {...exercise}
+                    userData={userData}
+                    setUserData={setUserData}
+                  />
+                )}
               </Stack.Screen>
             );
           });

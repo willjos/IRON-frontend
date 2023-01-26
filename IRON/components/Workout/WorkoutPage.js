@@ -1,10 +1,26 @@
+import { useState } from "react";
 import { View, Text, Pressable } from "react-native";
+import { LogBox } from "react-native";
 
-export default function WorkoutPage({ navigation, ...item }) {
+LogBox.ignoreLogs([
+  "Non-serializable values were found in the navigation state",
+]);
+
+export default function WorkoutPage({
+  navigation,
+  userData,
+  setUserData,
+  ...item
+}) {
   const { name, exercises } = item;
+  const [workoutData, setWorkoutData] = useState({});
 
   const handleExercisePress = (exerciseName) => {
-    navigation.navigate(exerciseName);
+    navigation.navigate(exerciseName, { workoutData, setWorkoutData });
+  };
+
+  const handleDonePress = () => {
+    navigation.navigate("Home Page");
   };
 
   return (
@@ -21,6 +37,12 @@ export default function WorkoutPage({ navigation, ...item }) {
           </Pressable>
         );
       })}
+      <Pressable
+        className="w-1/4 h-12 m-2 p-4 bg-green"
+        onPress={handleDonePress}
+      >
+        <Text className="text-white text-center">Done</Text>
+      </Pressable>
     </View>
   );
 }

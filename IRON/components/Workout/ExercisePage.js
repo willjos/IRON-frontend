@@ -2,7 +2,14 @@ import { useState } from "react";
 import { View, Text, TextInput, Pressable } from "react-native";
 import SetLog from "./SetLog";
 
-export default function ExercisePage({ ...exercise }) {
+export default function ExercisePage({
+  navigation,
+  userData,
+  setUserData,
+  workoutData,
+  setWorkoutData,
+  ...exercise
+}) {
   const { name } = exercise;
   const [weightInput, setWeightInput] = useState("");
   const [repInput, setRepInput] = useState("");
@@ -24,8 +31,21 @@ export default function ExercisePage({ ...exercise }) {
     setExerciseData(newExerciseData);
   };
 
+  const handleDonePress = () => {
+    const newWorkoutData = { ...workoutData };
+    if (workoutData) {
+      exerciseIndex = newWorkoutData.exercises.findIndex(
+        (exercise) => exercise.name === name
+      );
+      console.log(workoutData);
+    } else {
+      console.log("none", workoutData);
+    }
+    navigation.goBack();
+  };
+
   return (
-    <View>
+    <View className="justify-center items-center">
       {exerciseData &&
         exerciseData.map((setData, index) => {
           return <SetLog {...setData} key={index} setNumber={index + 1} />;
@@ -47,9 +67,15 @@ export default function ExercisePage({ ...exercise }) {
           className="w-1/6 h-12 m-2 p-4 bg-green"
           onPress={handleAddPress}
         >
-          <Text className="text-white">Add</Text>
+          <Text className="text-white text-center">Add</Text>
         </Pressable>
       </View>
+      <Pressable
+        className="w-1/4 h-12 m-2 p-4 bg-green"
+        onPress={handleDonePress}
+      >
+        <Text className="text-white text-center">Done</Text>
+      </Pressable>
     </View>
   );
 }
