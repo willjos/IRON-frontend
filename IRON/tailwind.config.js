@@ -13,6 +13,7 @@ module.exports = {
     "./components/Workout/WorkoutPage.js",
     "./components/Workout/SetLog.js",
     "./components/Workout/ExercisePage.js",
+    "./components/Create/SearchExercise.js",
   ],
   theme: {
     extend: {},

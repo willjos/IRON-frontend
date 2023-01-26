@@ -66,7 +66,7 @@ export default function NavHome({
           });
         })}
         <Stack.Screen name="Create">
-          {(props) => <Create {...props} />}
+          {(props) => <Create {...props} userData={userData} />}
         </Stack.Screen>
         <Stack.Screen name="Progress Tracker">
           {(props) => <ProgressTracker {...props} />}
