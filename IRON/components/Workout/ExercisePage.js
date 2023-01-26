@@ -6,6 +6,8 @@ export default function ExercisePage({
   navigation,
   userData,
   setUserData,
+  workoutData,
+  setWorkoutData,
   ...exercise
 }) {
   const { name } = exercise;
@@ -30,6 +32,15 @@ export default function ExercisePage({
   };
 
   const handleDonePress = () => {
+    const newWorkoutData = { ...workoutData };
+    if (workoutData) {
+      exerciseIndex = newWorkoutData.exercises.findIndex(
+        (exercise) => exercise.name === name
+      );
+      console.log(workoutData);
+    } else {
+      console.log("none", workoutData);
+    }
     navigation.goBack();
   };
 

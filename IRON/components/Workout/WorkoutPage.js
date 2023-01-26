@@ -1,5 +1,10 @@
 import { useState } from "react";
 import { View, Text, Pressable } from "react-native";
+import { LogBox } from "react-native";
+
+LogBox.ignoreLogs([
+  "Non-serializable values were found in the navigation state",
+]);
 
 export default function WorkoutPage({
   navigation,
