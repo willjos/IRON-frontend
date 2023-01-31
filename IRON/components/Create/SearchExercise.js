@@ -26,7 +26,7 @@ export default function SearchExercise({
       {workoutExercises &&
         workoutExercises.map((exercise, index) => {
           return (
-            <View className="m-1 p-1">
+            <View className="m-1 p-1" key={index}>
               <Text className="text-lg text-slate">
                 Exercise {index + 1}: {exercise}
               </Text>
@@ -48,9 +48,9 @@ export default function SearchExercise({
       )}
       {allExercises &&
         exerciseInput &&
-        allExercises.map((exercise) => {
+        allExercises.map((exercise, index) => {
           return (
-            <>
+            <View key={index}>
               {exercise.includes(exerciseInput) &&
                 exercise !== exerciseInput && (
                   <Pressable
@@ -60,7 +60,7 @@ export default function SearchExercise({
                     <Text className="text-center text-white">{exercise}</Text>
                   </Pressable>
                 )}
-            </>
+            </View>
           );
         })}
     </View>
