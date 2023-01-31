@@ -25,7 +25,11 @@ export default function LoginPage({ setCurrentUser, navigation }) {
       ) : (
         <View>
           <Text className="text-center">Log in here:</Text>
-          <UserForm setCurrentUser={setCurrentUser} navigation={navigation} />
+          <UserForm
+            setCurrentUser={setCurrentUser}
+            navigation={navigation}
+            endpoint={"login"}
+          />
         </View>
       )}
       {createAccountRender ? (
@@ -38,7 +42,11 @@ export default function LoginPage({ setCurrentUser, navigation }) {
       ) : (
         <View>
           <Text className="text-center">No account? Register with us:</Text>
-          <UserForm setCurrentUser={setCurrentUser} navigation={navigation} />
+          <UserForm
+            setCurrentUser={setCurrentUser}
+            navigation={navigation}
+            endpoint={"create-account"}
+          />
         </View>
       )}
     </View>
