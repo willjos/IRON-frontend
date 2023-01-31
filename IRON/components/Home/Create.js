@@ -36,7 +36,10 @@ export default function Create({ navigation, userData }) {
           <Text className="text-white text-center">Add Exercise</Text>
         </Pressable>
       ) : (
-        <SearchExercise />
+        <SearchExercise
+          workoutExercises={workoutExercises}
+          setWorkoutExercises={setWorkoutExercises}
+        />
       )}
       <Pressable
         className="w-1/4 h-12 m-2 p-4 bg-green"
