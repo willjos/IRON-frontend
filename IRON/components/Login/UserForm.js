@@ -1,7 +1,8 @@
 import { TextInput, Pressable, View, Text } from "react-native";
 import { useState } from "react";
+import { login, createAccount } from "../../Networking/APIRequests";
 
-export default function UserForm({ setCurrentUser, navigation }) {
+export default function UserForm({ setCurrentUser, navigation, endpoint }) {
   const [usernameInput, setUsernameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
 
@@ -13,8 +14,12 @@ export default function UserForm({ setCurrentUser, navigation }) {
     setPasswordInput(text);
   };
 
-  const handleSubmitPress = () => {
-    setCurrentUser(usernameInput);
+  const handleSubmitPress = async () => {
+    const result =
+      endpoint === "login"
+        ? await login(usernameInput, passwordInput)
+        : await createAccount(usernameInput, passwordInput);
+    result ? setCurrentUser(usernameInput) : alert("Access Denied");
   };
 
   return (
