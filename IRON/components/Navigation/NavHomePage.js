@@ -36,7 +36,13 @@ export default function NavHome({
           )}
         </Stack.Screen>
         <Stack.Screen name="Start Session">
-          {(props) => <StartSession {...props} userData={userData} />}
+          {(props) => (
+            <StartSession
+              {...props}
+              userData={userData}
+              currentUser={currentUser}
+            />
+          )}
         </Stack.Screen>
         {userData.workouts.map((item, index) => {
           return (

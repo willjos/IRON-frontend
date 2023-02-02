@@ -15,3 +15,14 @@ export async function createAccount(username, password) {
   });
   return res.ok;
 }
+
+export async function getUserWorkouts(username) {
+  const res = await fetch(
+    `https://iron-backend.herokuapp.com/get-workouts?username=${username}`,
+    {
+      // headers: { "Content-Type": "application/json" },
+    }
+  );
+  const resJSON = await res.json();
+  return resJSON;
+}
