@@ -13,8 +13,7 @@ import PRList from "../Progress/PRList";
 export default function NavHome({
   currentUser,
   setCurrentUser,
-  userData,
-  setUserData,
+  userWorkoutData,
 }) {
   return (
     <NavigationContainer>
@@ -36,40 +35,34 @@ export default function NavHome({
           )}
         </Stack.Screen>
         <Stack.Screen name="Start Session">
-          {(props) => <StartSession {...props} userData={userData} />}
+          {(props) => (
+            <StartSession
+              {...props}
+              userWorkoutData={userWorkoutData}
+              currentUser={currentUser}
+            />
+          )}
         </Stack.Screen>
-        {userData.workouts.map((item, index) => {
+        {userWorkoutData.workouts.map((item, index) => {
           return (
-            <Stack.Screen name={item.name} key={index}>
-              {(props) => (
-                <WorkoutPage
-                  {...props}
-                  {...item}
-                  userData={userData}
-                  setUserData={setUserData}
-                />
-              )}
+            <Stack.Screen name={item["workout_name"]} key={index}>
+              {(props) => <WorkoutPage {...props} {...item} />}
             </Stack.Screen>
           );
         })}
-        {userData.workouts.map((item) => {
+        {userWorkoutData.workouts.map((item) => {
           return item.exercises.map((exercise) => {
             return (
-              <Stack.Screen name={exercise["name"]}>
-                {(props) => (
-                  <ExercisePage
-                    {...props}
-                    {...exercise}
-                    userData={userData}
-                    setUserData={setUserData}
-                  />
-                )}
+              <Stack.Screen
+                name={`${item["workout_name"]}: ${exercise["exercise_name"]}`}
+              >
+                {(props) => <ExercisePage {...props} {...exercise} />}
               </Stack.Screen>
             );
           });
         })}
         <Stack.Screen name="Create">
-          {(props) => <Create {...props} userData={userData} />}
+          {(props) => <Create {...props} />}
         </Stack.Screen>
         <Stack.Screen name="Progress Tracker">
           {(props) => <ProgressTracker {...props} />}
