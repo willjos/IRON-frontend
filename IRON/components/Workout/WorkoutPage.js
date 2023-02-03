@@ -6,34 +6,39 @@ LogBox.ignoreLogs([
   "Non-serializable values were found in the navigation state",
 ]);
 
-export default function WorkoutPage({
-  navigation,
-  userData,
-  setUserData,
-  ...item
-}) {
-  const { name, exercises } = item;
-  const [workoutData, setWorkoutData] = useState({});
+export default function WorkoutPage({ navigation, ...item }) {
+  const { workout_name, exercises } = item;
+  const [workoutLogData, setWorkoutLogData] = useState({
+    workout_name,
+    exercises,
+  });
 
   const handleExercisePress = (exerciseName) => {
-    navigation.navigate(exerciseName, { workoutData, setWorkoutData });
+    navigation.navigate(exerciseName, { workoutLogData, setWorkoutLogData });
   };
 
   const handleDonePress = () => {
+    // POST logged workout to API.
     navigation.navigate("Home Page");
   };
 
   return (
     <View>
-      <Text>This is the workout page for {name}</Text>
+      <Text>This is the workout page for {workout_name}</Text>
       {exercises.map((exercise, index) => {
         return (
           <Pressable
             className="h-12 p-4 m-2 bg-green"
             key={index}
-            onPress={() => handleExercisePress(exercise["name"])}
+            onPress={() =>
+              handleExercisePress(
+                `${exercise["workout_name"]}: ${exercise["exercise_name"]}`
+              )
+            }
           >
-            <Text className="text-center text-white">{exercise["name"]}</Text>
+            <Text className="text-center text-white">
+              {exercise["exercise_name"]}
+            </Text>
           </Pressable>
         );
       })}

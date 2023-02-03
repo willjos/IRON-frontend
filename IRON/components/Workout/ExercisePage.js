@@ -2,18 +2,12 @@ import { useState } from "react";
 import { View, Text, TextInput, Pressable } from "react-native";
 import SetLog from "./SetLog";
 
-export default function ExercisePage({
-  navigation,
-  userData,
-  setUserData,
-  workoutData,
-  setWorkoutData,
-  ...exercise
-}) {
-  const { name } = exercise;
+export default function ExercisePage({ navigation, route, ...exercise }) {
+  const { exercise_name } = exercise;
+  const { workoutLogData, setWorkoutLogData } = route.params;
   const [weightInput, setWeightInput] = useState("");
   const [repInput, setRepInput] = useState("");
-  const [exerciseData, setExerciseData] = useState([]);
+  const [exerciseLogData, setExerciseLogData] = useState([]);
 
   const handleWeightChange = (weight) => {
     setWeightInput(weight);
@@ -24,30 +18,27 @@ export default function ExercisePage({
   };
 
   const handleAddPress = () => {
-    const newExerciseData = [
-      ...exerciseData,
+    const newExerciseLogData = [
+      ...exerciseLogData,
       { weight: weightInput, reps: repInput },
     ];
-    setExerciseData(newExerciseData);
+    setExerciseLogData(newExerciseLogData);
   };
 
   const handleDonePress = () => {
-    const newWorkoutData = { ...workoutData };
-    if (workoutData) {
-      exerciseIndex = newWorkoutData.exercises.findIndex(
-        (exercise) => exercise.name === name
-      );
-      console.log(workoutData);
-    } else {
-      console.log("none", workoutData);
-    }
+    const newWorkoutLogData = { ...workoutLogData };
+    const exerciseIndex = newWorkoutLogData["exercises"].findIndex(
+      (exercise) => exercise["exercise_name"] === exercise_name
+    );
+    newWorkoutLogData["exercises"][exerciseIndex].sets = exerciseLogData;
+    setWorkoutLogData(newWorkoutLogData);
     navigation.goBack();
   };
 
   return (
     <View className="justify-center items-center">
-      {exerciseData &&
-        exerciseData.map((setData, index) => {
+      {exerciseLogData &&
+        exerciseLogData.map((setData, index) => {
           return <SetLog {...setData} key={index} setNumber={index + 1} />;
         })}
       <View className="flex-row justify-center my-3">
