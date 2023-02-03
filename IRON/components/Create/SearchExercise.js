@@ -1,11 +1,11 @@
-import { View, Text, Pressable, TextInput } from "react-native";
+import { View, Text, Pressable, TextInput, ScrollView } from "react-native";
 import { useState } from "react";
 
 export default function SearchExercise({
   workoutExercises,
   setWorkoutExercises,
+  userExerciseData,
 }) {
-  const [allExercises] = useState(["bench", "dip", "squat"]);
   const [exerciseInput, setExerciseInput] = useState("");
 
   const handleExerciseInput = (text) => {
@@ -22,7 +22,7 @@ export default function SearchExercise({
   };
 
   return (
-    <View className="items-center">
+    <ScrollView>
       {workoutExercises &&
         workoutExercises.map((exercise, index) => {
           return (
@@ -46,23 +46,25 @@ export default function SearchExercise({
           <Text className="text-center text-white">{exerciseInput}</Text>
         </Pressable>
       )}
-      {allExercises &&
+      {userExerciseData &&
         exerciseInput &&
-        allExercises.map((exercise, index) => {
+        userExerciseData.map((exercise, index) => {
           return (
             <View key={index}>
-              {exercise.includes(exerciseInput) &&
-                exercise !== exerciseInput && (
+              {exercise["exercise_name"].includes(exerciseInput) &&
+                exercise["exercise_name"] !== exerciseInput && (
                   <Pressable
                     className="h-12 p-4 m-2 bg-green"
-                    onPress={() => handleAddExercise(exercise)}
+                    onPress={() => handleAddExercise(exercise["exercise_name"])}
                   >
-                    <Text className="text-center text-white">{exercise}</Text>
+                    <Text className="text-center text-white">
+                      {exercise["exercise_name"]}
+                    </Text>
                   </Pressable>
                 )}
             </View>
           );
         })}
-    </View>
+    </ScrollView>
   );
 }
