@@ -14,6 +14,7 @@ export default function NavHome({
   currentUser,
   setCurrentUser,
   userWorkoutData,
+  userExerciseData,
 }) {
   return (
     <NavigationContainer>
@@ -64,7 +65,7 @@ export default function NavHome({
           });
         })}
         <Stack.Screen name="Create">
-          {(props) => <Create {...props} />}
+          {(props) => <Create {...props} userExerciseData={userExerciseData} />}
         </Stack.Screen>
         <Stack.Screen name="Progress Tracker">
           {(props) => <ProgressTracker {...props} />}

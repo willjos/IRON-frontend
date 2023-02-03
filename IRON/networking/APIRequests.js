@@ -18,10 +18,7 @@ export async function createAccount(username, password) {
 
 export async function getUserWorkouts(username) {
   const res = await fetch(
-    `https://iron-backend.herokuapp.com/get-workouts?username=${username}`,
-    {
-      // headers: { "Content-Type": "application/json" },
-    }
+    `https://iron-backend.herokuapp.com/get-workouts?username=${username}`
   );
   const resJSON = await res.json();
   return resJSON;
@@ -34,4 +31,12 @@ export async function logUserWorkout(username, data) {
     body: JSON.stringify({ username, workout_data: data }),
   });
   return res.ok;
+}
+
+export async function getUserExercises(username) {
+  const res = await fetch(
+    `https://iron-backend.herokuapp.com/get-exercises?username=${username}`
+  );
+  const resJSON = await res.json();
+  return resJSON;
 }

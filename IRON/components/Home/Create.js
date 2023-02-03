@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { View, Text, TextInput, Pressable } from "react-native";
+import { Text, TextInput, Pressable, ScrollView } from "react-native";
 import SearchExercise from "../Create/SearchExercise";
 
-export default function Create({ navigation, userData }) {
+export default function Create({ navigation, userExerciseData }) {
   const [workoutName, setWorkoutName] = useState("");
   const [workoutExercises, setWorkoutExercises] = useState([]);
   const [addExercisePressed, setAddExercisePressed] = useState(false);
@@ -22,9 +22,9 @@ export default function Create({ navigation, userData }) {
   };
 
   return (
-    <View className="items-center">
+    <ScrollView>
       <TextInput
-        className="w-5/6 h-12 border-solid border border-slate m-2 p-4 bg-white"
+        className="h-12 border-solid border border-slate m-2 p-4 bg-white"
         placeholder="Enter Workout Name"
         onChangeText={handleWorkoutNameInput}
       />
@@ -38,6 +38,7 @@ export default function Create({ navigation, userData }) {
       ) : (
         <SearchExercise
           workoutExercises={workoutExercises}
+          userExerciseData={userExerciseData}
           setWorkoutExercises={setWorkoutExercises}
         />
       )}
@@ -47,6 +48,6 @@ export default function Create({ navigation, userData }) {
       >
         <Text className="text-white text-center">Done</Text>
       </Pressable>
-    </View>
+    </ScrollView>
   );
 }
