@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Text, TextInput, Pressable, ScrollView } from "react-native";
 import SearchExercise from "../Create/SearchExercise";
+import { addUserWorkout } from "../../Networking/APIRequests";
 
-export default function Create({ navigation, userExerciseData }) {
+export default function Create({ navigation, userExerciseData, currentUser }) {
   const [workoutName, setWorkoutName] = useState("");
   const [workoutExercises, setWorkoutExercises] = useState([]);
   const [addExercisePressed, setAddExercisePressed] = useState(false);
@@ -15,10 +16,18 @@ export default function Create({ navigation, userExerciseData }) {
     setAddExercisePressed(true);
   };
 
-  const handleDonePress = () => {
-    console.log("send POST request to API with new workout for user.");
-    alert("Workout Added"); // switch to using a confirm before sending the request?
-    navigation.goBack();
+  const handleDonePress = async () => {
+    const res = await addUserWorkout(
+      currentUser,
+      workoutName,
+      workoutExercises
+    );
+    if (res) {
+      alert("Workout Added");
+      navigation.goBack();
+    } else {
+      alert("Failed to Add Workout");
+    }
   };
 
   return (
