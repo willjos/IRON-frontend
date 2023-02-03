@@ -46,7 +46,9 @@ export default function NavHome({
         {userWorkoutData.workouts.map((item, index) => {
           return (
             <Stack.Screen name={item["workout_name"]} key={index}>
-              {(props) => <WorkoutPage {...props} {...item} />}
+              {(props) => (
+                <WorkoutPage {...props} {...item} currentUser={currentUser} />
+              )}
             </Stack.Screen>
           );
         })}

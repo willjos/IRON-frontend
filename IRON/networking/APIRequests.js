@@ -26,3 +26,12 @@ export async function getUserWorkouts(username) {
   const resJSON = await res.json();
   return resJSON;
 }
+
+export async function logUserWorkout(username, data) {
+  const res = await fetch("https://iron-backend.herokuapp.com/log-workout", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, workout_data: data }),
+  });
+  return res.ok;
+}
