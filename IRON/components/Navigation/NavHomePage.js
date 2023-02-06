@@ -6,7 +6,7 @@ import ProgressTracker from "../Home/ProgressTracker";
 import StartSession from "../Home/StartSession";
 import WorkoutPage from "../Workout/WorkoutPage";
 import ExercisePage from "../Workout/ExercisePage";
-import History from "../Progress/History";
+import History from "../Progress/History/History";
 import Analytics from "../Progress/Analytics";
 import PRList from "../Progress/PRList";
 
