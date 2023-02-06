@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Text, TextInput, Pressable, ScrollView } from "react-native";
+import { Text, TextInput, Pressable, ScrollView, Alert } from "react-native";
 import SearchExercise from "../Create/SearchExercise";
 import { addUserWorkout } from "../../Networking/APIRequests";
 
@@ -17,17 +17,31 @@ export default function Create({ navigation, userExerciseData, currentUser }) {
   };
 
   const handleDonePress = async () => {
-    const res = await addUserWorkout(
-      currentUser,
-      workoutName,
-      workoutExercises
-    );
-    if (res) {
-      alert("Workout Added");
-      navigation.goBack();
-    } else {
-      alert("Failed to Add Workout");
-    }
+    Alert.alert("Add this workout?", "", [
+      {
+        text: "Yes",
+        onPress: async () => {
+          if (!(workoutName && workoutExercises)) {
+            alert("Failed to Add Workout");
+          } else {
+            const res = await addUserWorkout(
+              currentUser,
+              workoutName,
+              workoutExercises
+            );
+            if (res) {
+              alert("Workout Added");
+              navigation.goBack();
+            } else {
+              alert("Failed to Add Workout");
+            }
+          }
+        },
+      },
+      {
+        text: "No",
+      },
+    ]);
   };
 
   return (

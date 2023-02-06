@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import { View, Text, Pressable } from "react-native";
-import { getUserWorkouts } from "../../Networking/APIRequests";
 
 export default function StartSession({ userWorkoutData, navigation }) {
   const handleWorkoutPress = (name) => {
