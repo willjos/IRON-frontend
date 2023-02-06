@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, Alert } from "react-native";
 import { LogBox } from "react-native";
 import { logUserWorkout } from "../../Networking/APIRequests";
 
@@ -19,13 +19,30 @@ export default function WorkoutPage({ navigation, currentUser, ...item }) {
   };
 
   const handleDonePress = async () => {
-    const res = await logUserWorkout(currentUser, workoutLogData);
-    if (res) {
-      alert("Workout Logged");
-      navigation.navigate("Home Page");
-    } else {
-      alert("Failed to Log Workout");
-    }
+    const checkSets = () => {
+      return workoutLogData.exercises.some((exercise) => exercise.sets);
+    };
+    Alert.alert("Log this workout?", "", [
+      {
+        text: "Yes",
+        onPress: async () => {
+          if (workoutLogData && checkSets()) {
+            const res = await logUserWorkout(currentUser, workoutLogData);
+            if (res) {
+              alert("Workout Logged");
+              navigation.navigate("Home Page");
+            } else {
+              alert("Failed to Log Workout");
+            }
+          } else {
+            alert("Failed to Log Workout");
+          }
+        },
+      },
+      {
+        text: "No",
+      },
+    ]);
   };
 
   return (

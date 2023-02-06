@@ -21,37 +21,27 @@ export default function Create({ navigation, userExerciseData, currentUser }) {
       {
         text: "Yes",
         onPress: async () => {
-          const res = await addUserWorkout(
-            currentUser,
-            workoutName,
-            workoutExercises
-          );
-          if (res) {
-            alert("Workout Added");
-            navigation.goBack();
-          } else {
+          if (!(workoutName && workoutExercises)) {
             alert("Failed to Add Workout");
+          } else {
+            const res = await addUserWorkout(
+              currentUser,
+              workoutName,
+              workoutExercises
+            );
+            if (res) {
+              alert("Workout Added");
+              navigation.goBack();
+            } else {
+              alert("Failed to Add Workout");
+            }
           }
         },
       },
       {
         text: "No",
-        onPress: () => {
-          console.log("No Pressed");
-        },
       },
     ]);
-    // const res = await addUserWorkout(
-    //   currentUser,
-    //   workoutName,
-    //   workoutExercises
-    // );
-    // if (res) {
-    //   alert("Workout Added");
-    //   navigation.goBack();
-    // } else {
-    //   alert("Failed to Add Workout");
-    // }
   };
 
   return (
