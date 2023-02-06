@@ -49,3 +49,11 @@ export async function addUserWorkout(username, workout_name, exercises) {
   });
   return res.ok;
 }
+
+export async function getUserHistory(username) {
+  const res = await fetch(
+    `https://iron-backend.herokuapp.com/get-history?username=${username}`
+  );
+  const resJSON = await res.json();
+  return resJSON;
+}

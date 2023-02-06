@@ -14,6 +14,9 @@ module.exports = {
     "./components/Workout/SetLog.js",
     "./components/Workout/ExercisePage.js",
     "./components/Create/SearchExercise.js",
+    "./components/Progress/Analytics.js",
+    "./components/Progress/History.js",
+    "./components/Progress/PRList.js",
   ],
   theme: {
     extend: {},
