@@ -16,6 +16,7 @@ export default function NavHome({
   userWorkoutData,
   userExerciseData,
   userHistory,
+  userPRs,
 }) {
   return (
     <NavigationContainer>
@@ -84,7 +85,7 @@ export default function NavHome({
           {(props) => <Analytics {...props} />}
         </Stack.Screen>
         <Stack.Screen name="Personal Records">
-          {(props) => <PRList {...props} />}
+          {(props) => <PRList {...props} userPRs={userPRs} />}
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

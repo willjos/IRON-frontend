@@ -57,3 +57,11 @@ export async function getUserHistory(username) {
   const resJSON = await res.json();
   return resJSON;
 }
+
+export async function getUserPRs(username) {
+  const res = await fetch(
+    `https://iron-backend.herokuapp.com/get-prs?username=${username}`
+  );
+  const resJSON = await res.json();
+  return resJSON;
+}

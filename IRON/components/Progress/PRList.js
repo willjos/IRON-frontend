@@ -1,9 +1,11 @@
 import { View, Text } from "react-native";
 
-export default function PRList() {
+export default function PRList({ userPRs }) {
   return (
     <View>
-      <Text>PR List</Text>
+      {userPRs.map((item) => (
+        <Text>{item}</Text>
+      ))}
     </View>
   );
 }
