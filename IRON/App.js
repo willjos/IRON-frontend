@@ -5,6 +5,7 @@ import {
   getUserExercises,
   getUserHistory,
   getUserWorkouts,
+  getUserPRs,
 } from "./Networking/APIRequests";
 
 export default function App() {
@@ -12,15 +13,18 @@ export default function App() {
   const [userWorkoutData, setUserWorkoutData] = useState({});
   const [userExerciseData, setUserExerciseData] = useState([]);
   const [userHistory, setUserHistory] = useState({});
+  const [userPRs, setUserPRs] = useState({});
 
   useEffect(() => {
     (async () => {
       const userWorkoutData = await getUserWorkouts(currentUser);
       const userExerciseData = await getUserExercises(currentUser);
       const userHistory = await getUserHistory(currentUser);
+      const userPRs = await getUserPRs(currentUser);
       setUserWorkoutData(userWorkoutData);
       setUserExerciseData(userExerciseData);
       setUserHistory(userHistory);
+      setUserPRs(userPRs);
     })();
   }, [currentUser]);
 
@@ -33,6 +37,7 @@ export default function App() {
           userWorkoutData={userWorkoutData}
           userExerciseData={userExerciseData}
           userHistory={userHistory}
+          userPRs={userPRs}
         />
       ) : (
         <NavLogin setCurrentUser={setCurrentUser} />
