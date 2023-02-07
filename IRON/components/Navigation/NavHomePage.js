@@ -82,7 +82,13 @@ export default function NavHome({
           {(props) => <History {...props} userHistory={userHistory} />}
         </Stack.Screen>
         <Stack.Screen name="Analytics">
-          {(props) => <Analytics {...props} />}
+          {(props) => (
+            <Analytics
+              {...props}
+              userHistory={userHistory}
+              userExerciseData={userExerciseData}
+            />
+          )}
         </Stack.Screen>
         <Stack.Screen name="Personal Records">
           {(props) => <PRList {...props} userPRs={userPRs} />}
