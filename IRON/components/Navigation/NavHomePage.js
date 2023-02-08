@@ -7,7 +7,7 @@ import StartSession from "../Home/StartSession";
 import WorkoutPage from "../Workout/WorkoutPage";
 import ExercisePage from "../Workout/ExercisePage";
 import History from "../Progress/History/History";
-import Analytics from "../Progress/Analytics";
+import Analytics from "../Progress/Analytics/Analytics";
 import PRList from "../Progress/PRList";
 
 export default function NavHome({

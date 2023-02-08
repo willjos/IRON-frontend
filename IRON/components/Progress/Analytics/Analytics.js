@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ScrollView, View, Text, Pressable } from "react-native";
+import VolumeProgressChart from "./VolumeProgressChart";
 
 export default function Analytics({ userHistory, userExerciseData }) {
   const [pressedExercise, setPressedExercise] = useState("");
@@ -25,7 +26,7 @@ export default function Analytics({ userHistory, userExerciseData }) {
   return (
     <View>
       <View>
-        <Text>GRAPH FROM pressedExerciseData</Text>
+        <VolumeProgressChart pressedExerciseData={pressedExerciseData} />
       </View>
       <ScrollView>
         {userExerciseData.map((exercise, index) => (
