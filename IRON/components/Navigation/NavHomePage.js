@@ -7,7 +7,7 @@ import StartSession from "../Home/StartSession";
 import WorkoutPage from "../Workout/WorkoutPage";
 import ExercisePage from "../Workout/ExercisePage";
 import History from "../Progress/History/History";
-import Analytics from "../Progress/Analytics";
+import Analytics from "../Progress/Analytics/Analytics";
 import PRList from "../Progress/PRList";
 
 export default function NavHome({
@@ -82,7 +82,13 @@ export default function NavHome({
           {(props) => <History {...props} userHistory={userHistory} />}
         </Stack.Screen>
         <Stack.Screen name="Analytics">
-          {(props) => <Analytics {...props} />}
+          {(props) => (
+            <Analytics
+              {...props}
+              userHistory={userHistory}
+              userExerciseData={userExerciseData}
+            />
+          )}
         </Stack.Screen>
         <Stack.Screen name="Personal Records">
           {(props) => <PRList {...props} userPRs={userPRs} />}
