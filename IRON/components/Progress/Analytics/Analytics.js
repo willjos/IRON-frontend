@@ -14,9 +14,10 @@ export default function Analytics({ userHistory, userExerciseData }) {
   const handleExercisePress = (exerciseName) => {
     setPressedExercise(exerciseName);
   };
+
   return (
-    <View>
-      <View className="h-100 border-solid border-slate bg-grey">
+    <ScrollView>
+      <View>
         <Text className="font-semibold text-2xl text-center m-4">
           {pressedExercise ? pressedExercise : "Select an exercise"}
         </Text>
@@ -28,7 +29,7 @@ export default function Analytics({ userHistory, userExerciseData }) {
           </Text>
         )}
       </View>
-      <ScrollView>
+      <View>
         {userExerciseData &&
           userExerciseData.map((exercise, index) => (
             <Pressable
@@ -41,7 +42,7 @@ export default function Analytics({ userHistory, userExerciseData }) {
               <Text className="text-white">{exercise["exercise_name"]}</Text>
             </Pressable>
           ))}
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 }
