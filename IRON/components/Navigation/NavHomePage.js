@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Create from "../Home/Create";
@@ -10,14 +11,12 @@ import History from "../Progress/History/History";
 import Analytics from "../Progress/Analytics/Analytics";
 import PRList from "../Progress/PRList";
 
-export default function NavHome({
-  currentUser,
-  setCurrentUser,
-  userWorkoutData,
-  userExerciseData,
-  userHistory,
-  userPRs,
-}) {
+export default function NavHome({ currentUser, setCurrentUser }) {
+  const [userWorkoutData, setUserWorkoutData] = useState({ workouts: [] });
+  const [userExerciseData, setUserExerciseData] = useState([]);
+  const [userHistory, setUserHistory] = useState({});
+  const [userPRs, setUserPRs] = useState({});
+
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -34,6 +33,10 @@ export default function NavHome({
               {...props}
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}
+              setUserWorkoutData={setUserWorkoutData}
+              setUserExerciseData={setUserExerciseData}
+              setUserHistory={setUserHistory}
+              setUserPRs={setUserPRs}
             />
           )}
         </Stack.Screen>
